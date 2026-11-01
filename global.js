@@ -21,8 +21,8 @@ let pages = [
 
 const BASE_PATH =
   location.hostname === 'localhost' || location.hostname === '127.0.0.1'
-    ? '/' // Local server
-    : '/dsc106-2026-fall/'; // GitHub Pages repo name
+    ? '/'
+    : '/dsc106-2026-fall/';
 
 let nav = document.createElement('nav');
 document.body.prepend(nav);
@@ -69,12 +69,10 @@ function setColorScheme(colorScheme) {
   select.value = colorScheme;
 }
 
-// Step 4.5: on page load, use the saved choice if there is one
 if ('colorScheme' in localStorage) {
   setColorScheme(localStorage.colorScheme);
 }
 
-// Step 4.4: when the user picks a theme, apply it and save it
 select.addEventListener('input', function (event) {
   console.log('color scheme changed to', event.target.value);
   setColorScheme(event.target.value);
@@ -101,15 +99,12 @@ form?.addEventListener('submit', function (event) {
 
    export async function fetchJSON(url) {
      try {
-       // Fetch the JSON file from the given URL
        const response = await fetch(url);
 
-       // Check that the request actually succeeded
        if (!response.ok) {
          throw new Error(`Failed to fetch projects: ${response.statusText}`);
        }
 
-       // Turn the response into a JavaScript array/object
        const data = await response.json();
        return data;
      } catch (error) {
@@ -123,7 +118,6 @@ form?.addEventListener('submit', function (event) {
     return;
   }
 
-  // Only allow real heading tags
   const validHeadings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
   if (!validHeadings.includes(headingLevel)) headingLevel = 'h2';
 
@@ -139,7 +133,10 @@ form?.addEventListener('submit', function (event) {
     article.innerHTML = `
       <${headingLevel}>${project.title}</${headingLevel}>
       <img src="${project.image}" alt="${project.title}">
-      <p>${project.description}</p>
+      <div>
+        <p>${project.description}</p>
+        <p class="project-year">c. ${project.year}</p>
+      </div>
     `;
     containerElement.appendChild(article);
   }

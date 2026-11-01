@@ -128,3 +128,75 @@ article header p{
      margin: 0;
      font-size: 2em;
    }
+
+  .project-year {
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  color: gray;
+  margin: 0;
+}
+
+#projects-pie-plot {
+  width: 15em;
+  flex-shrink: 0;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.legend {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  padding: 1em;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.swatch {
+  display: inline-block;
+  width: 1em;
+  aspect-ratio: 1 / 1;
+  background: var(--color);
+  border-radius: 50%;
+}
+
+.searchBar {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 0.5em;
+  margin-block: 1em;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+#projects-pie-plot path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(55% 0.25 300) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
