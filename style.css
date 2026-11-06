@@ -200,3 +200,98 @@ article header p{
 .selected:is(path) {
   fill: var(--color);
 }
+
+dl.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5em 1em;
+}
+
+dl.stats dt {
+  grid-row: 1;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+dl.stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 1.5em;
+  overflow-wrap: anywhere;
+}
+
+.gridlines line {
+  stroke: currentColor;
+  opacity: 0.15;
+}
+
+.gridlines path {
+  display: none;
+}
+
+
+/* Label/value grid for the tooltip */
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em 1em;
+  margin: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info dt {
+  opacity: 0.6;
+  font-size: 0.85em;
+}
+
+dl.info dd {
+  margin: 0;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background-color: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  padding: 0.75em 1em;
+  pointer-events: none;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: white;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
