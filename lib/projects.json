@@ -2,7 +2,7 @@
     {
         "title": "Bikewatching",
         "year": "2026",
-        "image": "images/bikewatching.png",
+        "image": "https://vedikagoyal13.github.io/dsc106-2026-fall/images/bikewatching.png",
         "description": "An interactive map of the Boston-area Bluebikes traffic in March 2024, showing station traffic volume and flow throughout the day.",
         "url": "https://vgoyal413.github.io/lab7/"
     },
